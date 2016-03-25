@@ -24,7 +24,7 @@ var devConfig = {
   devtool: config.devtool,
   devServer: {
     hot: true,
-    contentBase: "dist",
+    contentBase: "src",
     // Set this if you want webpack-dev-server to delegate a single path to an arbitrary server.
     // Use "*" to proxy all paths to the specified server.
     // This is useful if you want to get rid of 'http://localhost:8080/' in script[src],
