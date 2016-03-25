@@ -1,5 +1,7 @@
 # Angular with Webpack
 
+[![Build Status](https://travis-ci.org/ohiocowboy/angular-starter.svg?branch=master)](https://travis-ci.org/ohiocowboy/angular-starter)
+
 This is starter project for building scalable apps with [Angular](https://angularjs.org), [ES6](https://git.io/es6features), and [Webpack](http://webpack.github.io/) and [Gulp](http://gulpjs.com/)
 
 **Please read this REAME in its entirety.**  It is updated frequently to address questions and issues that have come up.
