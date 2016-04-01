@@ -5,18 +5,18 @@ import angular from 'angular';
 import 'angular-ui-router';
 import 'angular-breadcrumb';
 import 'angular-ui-bootstrap';
+import 'restangular';
+import Rest from './common/rest/rest.factory';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import {logConfig} from './log.config';
 
-//Set this variable if you are using security, and need to configure a context root.
-//window.krBaseUrl = 'context-root';
-
 let appModule = angular.module('app', [
 	'ui.router',
   'ncy-angular-breadcrumb',
 	'ui.bootstrap',
+  'restangular',
 	Common.name,
 	Components.name
 ])
@@ -32,6 +32,7 @@ let appModule = angular.module('app', [
     template: 'bootstrap3'
   });
 })
+.factory('Rest', Rest.restFactory)
 .run(/*@ngInject*/function ($rootScope, $state, $stateParams, $anchorScroll, $log) {
   $rootScope.$state = $state;
   $rootScope.$stateParams = $stateParams;
