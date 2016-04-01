@@ -1,0 +1,50 @@
+plugins {
+  id "com.moowork.node" version "0.12"
+}
+
+apply plugin: 'java'
+
+node {
+  // Version of node to use.
+  version = '4.2.1'
+
+  // Version of npm to use.
+  npmVersion = '2.14.7'
+
+  // Base URL for fetching node distributions (change if you have a mirror).
+  distBaseUrl = 'https://nodejs.org/dist'
+
+  // If true, it will download node using above parameters.
+  // If false, it will try to use globally installed node.
+  download = true
+
+  // Set the work directory for unpacking node
+  workDir = file("${project.buildDir}/nodejs")
+
+  // Set the work directory where node_modules should be located
+  nodeModulesDir = file("${project.projectDir}")
+}
+
+task npmPrune(type: NpmTask, dependsOn: npmInstall) {
+    args = ['prune']
+}
+
+task npmBuild(type: NpmTask, dependsOn: npmPrune) {
+    args = ['run', 'build:dist']
+}
+
+task npmTest(type: NpmTask, dependsOn: npmBuild) {
+    args = ['run', 'test']
+}
+
+jar {
+    from 'dist'
+    eachFile { details ->
+        details.path = details.path.startsWith('META-INF') ?: 'static/'+details.path
+    }
+    // Jar has duplicate empty folders (see http://issues.gradle.org/browse/GRADLE-1830)
+    // So we need to set includeEmptyDirs to false
+    includeEmptyDirs = false
+}
+
+jar.dependsOn npmTest
