@@ -10,7 +10,7 @@ var distConfig = {
     app: [
       './src/app/app.js'
     ],
-    vendor: ["jquery", "angular", "angular-ui-router", "angular-animate", "angular-ui-bootstrap", "angular-breadcrumb", "bootstrap", "lodash"]
+    vendor: ["jquery", "angular", "angular-ui-router", "angular-animate", "angular-ui-bootstrap", "angular-breadcrumb", "bootstrap", "lodash", "restangular"]
   },
   output: config.output,
   externals: config.externals,
