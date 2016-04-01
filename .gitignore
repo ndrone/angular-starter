@@ -7,3 +7,5 @@ target/
 node/
 *.iml
 *.orig
+.gradle/
+build/
